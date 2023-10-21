@@ -1,0 +1,20 @@
+<%- include('../partials/header.ejs', {title: title}) %>
+<a href="/">Menu</a>
+
+<% if (errors !== undefined) {%>
+    <p><%= errors[0].msg %></p>
+<% }%>
+
+<form action="/cities" method="post">
+    <input type="string" autofocus name="city" placeholder="Entrez une ville" />
+    <button type="submit">Chercher</button>
+</form>
+
+<% if (cities !== undefined) { %>
+    <ul>
+        <% cities.forEach(city => {
+            %><li><a href="https://www.openstreetmap.org/search?query=<%= city.name %>" target="_blank"><%= city.name %> (<%= city.info %>)</a></li><%
+        }); %>
+    </ul>
+ <% } %>
+<%- include('../partials/footer.ejs') %>

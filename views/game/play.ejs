@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs', {title: title}) %>
+<a href="/">Menu</a>
+
+<h1>Le juste nombre</h1>
+
+<p>Essais restants : <%= game._remainingTries %> </p>
+
+<% if (errors !== undefined) {%>
+        <p><%= errors[0].msg %></p>
+ <% }%>
+
+<form action="/play" method="post">
+    <input type="number" autofocus name="guess" min="1" max="1000" placeholder="Entrez un nombre" />
+    <button type="submit">Jouer</button>
+</form>
+<a href="/play">Relancé</a>
+
+
+<% if (game.status == status.higher) { %>
+    <p>Le nombre à trouver est plus grand</p>
+<% } else if (game.status == status.lower) { %>
+    <p>Le nombre à trouver est plus petit</p>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

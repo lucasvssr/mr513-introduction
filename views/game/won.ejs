@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs', {title: title}) %>
+
+<h1>Bravo !</h1>
+
+<img src="/images/face-cool.png" alt="Bravo" />
+
+<p>Vous avez gagné en <%= 10 - game._remainingTries %> essais</p>
+
+<a href="/play">Nouvelle partie</a>
+
+<%- include('../partials/footer.ejs') %>
